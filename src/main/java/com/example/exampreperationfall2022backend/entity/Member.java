@@ -1,5 +1,6 @@
 package com.example.exampreperationfall2022backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,8 +35,9 @@ public class Member {
     @Column
     private Integer ranking;
 
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+    @OneToMany
+    @JoinColumn(name = "member_id")
+    @JsonBackReference
     private List<Reservation> reservations;
 
     public Member(String firstName, String lastName, String street, String city, Integer zip, boolean approved, Integer ranking) {

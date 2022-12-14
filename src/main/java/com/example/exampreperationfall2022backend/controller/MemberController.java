@@ -11,18 +11,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@CrossOrigin
 public class MemberController {
 
     private MemberService memberService;
-    private MemberRepository memberRepository;
-
     @Autowired
-    public MemberController(MemberService memberService, MemberRepository memberRepository){
+    public MemberController(MemberService memberService){
         this.memberService = memberService;
-        this.memberRepository = memberRepository;
     }
-
 
     @GetMapping("/members")
     public List<Member> getAllMember(){

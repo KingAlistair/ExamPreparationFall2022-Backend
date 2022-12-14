@@ -23,12 +23,12 @@ public class Reservation {
     @Column
     private LocalDate rentalDate;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "member_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "member_id")
     private Member member;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "car_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "car_id")
     private Car car;
 
     public Reservation(LocalDate reservationDate, LocalDate rentalDate, Member member, Car car) {
