@@ -1,20 +1,20 @@
 package com.example.exampreperationfall2022backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "member")
 public class Member {
 
     @Id
@@ -35,10 +35,8 @@ public class Member {
     @Column
     private Integer ranking;
 
-    @OneToMany
-    @JoinColumn(name = "member_id")
-    @JsonBackReference
-    private List<Reservation> reservations;
+    @OneToMany(mappedBy = "member")
+    private Set<Reservation> reservations = new HashSet<>();
 
     public Member(String firstName, String lastName, String street, String city, Integer zip, boolean approved, Integer ranking) {
         this.firstName = firstName;

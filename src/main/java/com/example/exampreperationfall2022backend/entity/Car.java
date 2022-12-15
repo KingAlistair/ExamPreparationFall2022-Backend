@@ -1,11 +1,11 @@
 package com.example.exampreperationfall2022backend.entity;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
@@ -28,9 +28,6 @@ public class Car {
     @Column
     private int bestDiscount;
 
-    @OneToMany(mappedBy = "car", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private List<Reservation> reservations;
 
     public Car(String brand, String model, double pricePrDay, int bestDiscount) {
         this.brand = brand;

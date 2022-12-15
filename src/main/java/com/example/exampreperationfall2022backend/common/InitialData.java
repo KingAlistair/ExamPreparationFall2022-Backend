@@ -7,12 +7,13 @@ import com.example.exampreperationfall2022backend.repository.CarRepository;
 import com.example.exampreperationfall2022backend.repository.MemberRepository;
 import com.example.exampreperationfall2022backend.repository.ReservationRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
 
-//@Component
+@Configuration
 public class InitialData implements CommandLineRunner {
 
     MemberRepository memberRepository;
@@ -37,10 +38,10 @@ public class InitialData implements CommandLineRunner {
         carRepository.save(car2);
 
 
-        Reservation reservation1 = new Reservation(LocalDate.now(), LocalDate.now(), member, car1);
-        Reservation reservation2 = new Reservation(LocalDate.now(), LocalDate.now(), member, car2);
+/*        Reservation reservation1 = new Reservation(LocalDate.now(), LocalDate.now());
+        Reservation reservation2 = new Reservation(LocalDate.now(), LocalDate.now());
 
         reservationRepository.save(reservation1);
-        reservationRepository.save(reservation2);
+        reservationRepository.save(reservation2);*/
     }
 }
