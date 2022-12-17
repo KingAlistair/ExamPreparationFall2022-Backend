@@ -6,6 +6,7 @@ import com.example.exampreperationfall2022backend.entity.Reservation;
 import com.example.exampreperationfall2022backend.repository.CarRepository;
 import com.example.exampreperationfall2022backend.repository.MemberRepository;
 import com.example.exampreperationfall2022backend.repository.ReservationRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -16,10 +17,11 @@ import java.time.LocalDate;
 @Configuration
 public class InitialData implements CommandLineRunner {
 
-    MemberRepository memberRepository;
-    ReservationRepository reservationRepository;
-    CarRepository carRepository;
+   private final MemberRepository memberRepository;
+   private final ReservationRepository reservationRepository;
+   private  final CarRepository carRepository;
 
+   @Autowired
     public InitialData(MemberRepository memberRepository, ReservationRepository reservationRepository, CarRepository carRepository) {
         this.memberRepository = memberRepository;
         this.reservationRepository = reservationRepository;
@@ -41,9 +43,9 @@ public class InitialData implements CommandLineRunner {
         carRepository.save(car2);
 
         Reservation reservation1 = new Reservation(LocalDate.of(2022, 12, 18),
-                LocalDate.of(2022, 12, 9), member1);
+                LocalDate.of(2022, 12, 9), member1, car1);
         Reservation reservation2 = new Reservation(LocalDate.of(2022, 12, 31),
-                LocalDate.of(2022, 12, 10), member2);
+                LocalDate.of(2022, 12, 10), member2, car1);
 
         reservationRepository.save(reservation1);
         reservationRepository.save(reservation2);

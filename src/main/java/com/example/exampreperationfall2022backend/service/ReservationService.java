@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class ReservationService {
 
-    ReservationRepository reservationRepository;
+    private final ReservationRepository reservationRepository;
 
     @Autowired
     public ReservationService(ReservationRepository reservationRepository) {

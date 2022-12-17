@@ -13,7 +13,7 @@ import java.util.List;
 @CrossOrigin
 public class ReservationController {
 
-    private ReservationService reservationService;
+    private final ReservationService reservationService;
 
     @Autowired
     public ReservationController(ReservationService reservationService){

@@ -15,7 +15,7 @@ import java.util.List;
 @CrossOrigin
 public class MemberController {
 
-    private MemberService memberService;
+    private final MemberService memberService;
     @Autowired
     public MemberController(MemberService memberService){
         this.memberService = memberService;
