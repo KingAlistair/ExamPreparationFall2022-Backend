@@ -22,16 +22,15 @@ public class Reservation {
     @Column
     private LocalDate reservationDate;
     @Column
-    private LocalDate rentalDate;
-
+    private LocalDate rentalDate = LocalDate.now();
 
     @ManyToOne
     @JoinColumn(name = "member_id", referencedColumnName = "id")
     private Member member;
 
-    public Reservation(LocalDate reservationDate, LocalDate rentalDate) {
+    public Reservation(LocalDate reservationDate, Member member) {
         this.reservationDate = reservationDate;
-        this.rentalDate = rentalDate;
+        this.member = member;
     }
 
     public Reservation(LocalDate reservationDate, LocalDate rentalDate, Member  member) {
