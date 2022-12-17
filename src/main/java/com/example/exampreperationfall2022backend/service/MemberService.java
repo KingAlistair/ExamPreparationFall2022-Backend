@@ -13,7 +13,7 @@ public class MemberService {
     MemberRepository memberRepository;
 
     @Autowired
-    MemberService(MemberRepository memberRepository) {
+    public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 

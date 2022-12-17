@@ -18,7 +18,6 @@ public class InitialData implements CommandLineRunner {
 
     MemberRepository memberRepository;
     ReservationRepository reservationRepository;
-
     CarRepository carRepository;
 
     public InitialData(MemberRepository memberRepository, ReservationRepository reservationRepository, CarRepository carRepository) {
@@ -37,11 +36,9 @@ public class InitialData implements CommandLineRunner {
         carRepository.save(car1);
         carRepository.save(car2);
 
+        Reservation reservation = new Reservation(LocalDate.of(2022,12,12),
+                LocalDate.of(2022,12,14), member);
 
-/*        Reservation reservation1 = new Reservation(LocalDate.now(), LocalDate.now());
-        Reservation reservation2 = new Reservation(LocalDate.now(), LocalDate.now());
-
-        reservationRepository.save(reservation1);
-        reservationRepository.save(reservation2);*/
+        reservationRepository.save(reservation);
     }
 }

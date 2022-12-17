@@ -24,13 +24,19 @@ public class Reservation {
     @Column
     private LocalDate rentalDate;
 
-    @JsonBackReference
-    @ManyToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "member_id", referencedColumnName = "id")
+
+    @ManyToOne
+    @JoinColumn(name = "member_id", referencedColumnName = "id")
     private Member member;
 
     public Reservation(LocalDate reservationDate, LocalDate rentalDate) {
         this.reservationDate = reservationDate;
         this.rentalDate = rentalDate;
+    }
+
+    public Reservation(LocalDate reservationDate, LocalDate rentalDate, Member  member) {
+        this.reservationDate = reservationDate;
+        this.rentalDate = rentalDate;
+        this.member = member;
     }
 }

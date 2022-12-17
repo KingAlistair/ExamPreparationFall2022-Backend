@@ -1,6 +1,7 @@
 package com.example.exampreperationfall2022backend.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +37,7 @@ public class Member {
     private Integer ranking;
 
     @OneToMany(mappedBy = "member")
+    @JsonBackReference
     private Set<Reservation> reservations = new HashSet<>();
 
     public Member(String firstName, String lastName, String street, String city, Integer zip, boolean approved, Integer ranking) {
