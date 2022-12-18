@@ -7,9 +7,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin
@@ -50,18 +55,28 @@ public class ReservationController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/carReservations/{id}")
-    public List<Reservation> getCarReservation(@PathVariable("id") Long id) {
-        List<Reservation> allReservation = reservationService.getAllReservations();
-        List<Reservation> sameCarReservation = new ArrayList<>();
+    @GetMapping("/carReservations/{id}/{date}")
+    public boolean getCarReservation(@PathVariable("id") Long id,@PathVariable String date) throws ParseException {
+        List<Reservation> reservations = reservationService.getAllReservations();
+        List<Reservation> carReservations = new ArrayList<>();
 
-        for (Reservation reservation : allReservation
+       reservations = reservations.stream().filter(item -> item.getCar().getId() == id).collect(Collectors.toList());
+
+
+
+
+        Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        LocalDate localdate = date2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+
+
+        for (Reservation reservation : reservations
         ) {
-            if (reservation.getCar().getId() == id) {
-                sameCarReservation.add(reservation);
+            System.out.println(reservation.getReservationDate());
+            if (reservation.getReservationDate().equals(localdate)) {
+                return false;
             }
         }
-        return sameCarReservation;
+        return true;
     }
-
 }
