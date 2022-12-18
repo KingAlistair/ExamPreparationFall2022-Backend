@@ -29,6 +29,7 @@ public class Reservation {
 
     @ManyToOne
     @JoinColumn(name = "car_id", referencedColumnName = "id")
+
     private Car car;
 
 

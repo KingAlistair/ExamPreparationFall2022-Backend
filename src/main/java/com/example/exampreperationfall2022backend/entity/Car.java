@@ -30,7 +30,7 @@ public class Car {
     @Column
     private int bestDiscount;
 
-    @OneToMany(mappedBy = "car")
+    @OneToMany(mappedBy = "car", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference
     private Set<Reservation> reservations = new HashSet<>();
 

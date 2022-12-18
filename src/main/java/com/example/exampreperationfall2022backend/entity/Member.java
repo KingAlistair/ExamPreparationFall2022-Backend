@@ -36,7 +36,7 @@ public class Member {
     @Column
     private Integer ranking;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference
     private Set<Reservation> reservations = new HashSet<>();
 
