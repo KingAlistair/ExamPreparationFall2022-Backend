@@ -11,7 +11,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -56,19 +55,13 @@ public class ReservationController {
     }
 
     @GetMapping("/carReservations/{id}/{date}")
-    public boolean getCarReservation(@PathVariable("id") Long id,@PathVariable String date) throws ParseException {
+    public boolean getCarReservation(@PathVariable("id") Long id, @PathVariable String date) throws ParseException {
         List<Reservation> reservations = reservationService.getAllReservations();
-        List<Reservation> carReservations = new ArrayList<>();
 
-       reservations = reservations.stream().filter(item -> item.getCar().getId() == id).collect(Collectors.toList());
-
-
-
+        reservations = reservations.stream().filter(item -> item.getCar().getId() == id).collect(Collectors.toList());
 
         Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(date);
         LocalDate localdate = date2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
-
 
         for (Reservation reservation : reservations
         ) {
