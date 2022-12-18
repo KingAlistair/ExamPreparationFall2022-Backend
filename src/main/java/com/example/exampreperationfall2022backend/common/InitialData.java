@@ -39,13 +39,17 @@ public class InitialData implements CommandLineRunner {
 
         Car car1 = new Car("Ford", "Focus", 250.00, 10);
         Car car2 = new Car("Opel", "Astra", 210.00, 20);
+        Car car3 = new Car("Renault", "Megane", 220.00, 20);
+        Car car4 = new Car("Renault", "Twingo", 180.00, 35);
         carRepository.save(car1);
         carRepository.save(car2);
+        carRepository.save(car3);
+        carRepository.save(car4);
 
         Reservation reservation1 = new Reservation(LocalDate.of(2022, 12, 18),
                 LocalDate.of(2022, 12, 9), member1, car1);
         Reservation reservation2 = new Reservation(LocalDate.of(2022, 12, 31),
-                LocalDate.of(2022, 12, 10), member2, car1);
+                LocalDate.of(2022, 12, 10), member2, car2);
 
         reservationRepository.save(reservation1);
         reservationRepository.save(reservation2);
